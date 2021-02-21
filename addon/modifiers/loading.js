@@ -12,14 +12,22 @@ export default class LoadingModifier extends Modifier {
 
   _setAttibutes() {
     if (window.img_loading === 'native') {
-      this.element.setAttribute('src', this.args.src);
-      this.element.setAttribute('srcset', this.args.srcset);
-      this.element.setAttribute('loading', this.args.type);
+      if (this.args.named.src) {
+        this.element.setAttribute('src', this.args.named.src);
+      } else if (this.args.named.srcset) {
+        this.element.setAttribute('srcset', this.args.named.srcset);
+      }
+
+      this.element.setAttribute('loading', this.args.named.type);
     } else if (window.img_loading === 'lazysizes') {
-      this.element.dataset.src = this.args.src;
-      this.element.dataset.srcset = this.args.srcset;
-      this.element.classList.add('lazyload');
+      if (this.args.named.src) {
+        this.element.dataset.src = this.args.named.src;
+      } else if (this.args.named.srcset) {
+        this.element.dataset.srcset = this.args.named.srcset;
+      }
     }
+
+    this.element.classList.add('lazyload');
   }
 
   _check() {
