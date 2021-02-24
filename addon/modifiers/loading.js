@@ -1,4 +1,7 @@
+import { isBlank, isPresent } from '@ember/utils';
+
 import Modifier from 'ember-modifier';
+import { assert } from '@ember/debug';
 
 export default class LoadingModifier extends Modifier {
   didUpdateArguments() {
@@ -15,26 +18,38 @@ export default class LoadingModifier extends Modifier {
 
   _setAttibutes() {
     if (window.img_loading === 'native') {
-      if (this.args.named.src) {
-        this.element.setAttribute('src', this.args.named.src);
+      if (isBlank(this.args.named.src) && isBlank(this.args.named.srcset)) {
+        assert('You should set whether src or srcset parameter.');
+      } else {
+        if (isPresent(this.args.named.src)) {
+          this.element.setAttribute('src', this.args.named.src);
+        }
+
+        if (isPresent(this.args.named.srcset)) {
+          this.element.setAttribute('srcset', this.args.named.srcset);
+        }
       }
 
-      if (this.args.named.srcset) {
-        this.element.setAttribute('srcset', this.args.named.srcset);
+      if (isPresent(this.args.named.type)) {
+        this.element.setAttribute('loading', this.args.named.type);
+      } else {
+        this.element.setAttribute('loading', 'auto');
       }
-
-      this.element.setAttribute('loading', this.args.named.type);
     } else if (window.img_loading === 'lazysizes') {
-      if (this.args.named.sizes) {
+      if (isBlank(this.args.named.src) && isBlank(this.args.named.srcset)) {
+        assert('You should set whether src or srcset parameter.');
+      } else {
+        if (isPresent(this.args.named.src)) {
+          this.element.dataset.src = this.args.named.src;
+        }
+
+        if (isPresent(this.args.named.srcset)) {
+          this.element.dataset.srcset = this.args.named.srcset;
+        }
+      }
+
+      if (isPresent(this.args.named.sizes)) {
         this.element.dataset.sizes = this.args.named.sizes;
-      }
-
-      if (this.args.named.src) {
-        this.element.dataset.src = this.args.named.src;
-      }
-
-      if (this.args.named.srcset) {
-        this.element.dataset.srcset = this.args.named.srcset;
       }
 
       this.element.classList.add('lazyload');
