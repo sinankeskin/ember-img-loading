@@ -24,9 +24,9 @@ Simply add modifier to img tag like;
 <img {{loading type="lazy" src="/images/slide.png" srcset='/assets/images/slides/slide.png 1x, /assets/images/slides/slide@2x.png 2x' sizes="auto" }}>
 ```
 
-- type parameter can be: "auto", "lazy" or "eager". auto is the browser default.
-- You can src and srcset parameters together but you should set at least one.
-- sizes parameter can be only "auto" and it works only lazysizes library.
+- type parameter can be: "auto", "lazy" or "eager". If not present auto is the browser default.
+- You can use src and srcset parameters together but you should set at least one.
+- sizes parameter can be only "auto" and it works only lazysizes library which means your browser doesn't support native lazy loading.
 - If you want to reach the browser lazy loading support this modifier adds img_loading parameter to window object.
 - So you can reach with window.img_loading. Either "native" or "lazysizes" will return.
 
