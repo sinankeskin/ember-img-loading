@@ -2,7 +2,7 @@
 
 This is an element modifier for images.
 If the browser supports natively, it adds loading attribute to img tag,
-if the browser doesn't support, it fallback and loads to lazysizes library and adds some data- attributes.
+if the browser doesn't support, it fallbacks and loads to lazysizes library and adds some data- attributes.
 
 ## Compatibility
 
