@@ -4,15 +4,15 @@ This is an element modifier for images.
 If the browser supports natively, it adds loading attribute to img tag,
 if the browser doesn't support, it fallbacks and loads to lazysizes library and adds some data- attributes.
 
+
 ## Compatibility
 
 * Ember.js v3.24 or above
 * Ember CLI v3.24 or above
-* Node.js v12 or above
+* Node.js v14 or above
 
 
-Installation
-------------------------------------------------------------------------------
+## Installation
 
 ```
 ember install ember-img-loading
@@ -35,6 +35,7 @@ Simply add modifier to img tag like;
 ## Contributing
 
 See the [Contributing](CONTRIBUTING.md) guide for details.
+
 
 ## License
 
