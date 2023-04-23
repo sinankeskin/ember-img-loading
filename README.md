@@ -4,13 +4,10 @@ This is an element modifier for images.
 If the browser supports natively, it adds loading attribute to img tag,
 if the browser doesn't support, it fallbacks and loads to lazysizes library and adds some data- attributes.
 
-
 ## Compatibility
 
-* Ember.js v3.28 or above
-* Ember CLI v3.28 or above
-* Node.js v14 or above
-
+- Ember.js v3.28 or above
+- Embroider or ember-auto-import v2
 
 ## Installation
 
@@ -23,7 +20,14 @@ ember install ember-img-loading
 Simply add modifier to img tag like;
 
 ```handlebars
-<img {{loading type="lazy" src="/images/slide.png" srcset='/assets/images/slides/slide.png 1x, /assets/images/slides/slide@2x.png 2x' sizes="auto" }}>
+<img
+  {{loading
+    type='lazy'
+    src='/images/slide.png'
+    srcset='/assets/images/slides/slide.png 1x, /assets/images/slides/slide@2x.png 2x'
+    sizes='auto'
+  }}
+/>
 ```
 
 - type parameter can be: "auto", "lazy" or "eager". If not present auto is the browser default.
@@ -35,7 +39,6 @@ Simply add modifier to img tag like;
 ## Contributing
 
 See the [Contributing](CONTRIBUTING.md) guide for details.
-
 
 ## License
 
